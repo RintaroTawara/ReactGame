@@ -101,6 +101,10 @@ export default function Game() {
   const jumpTo = (nextMove) => {
     setCurrentMove(nextMove);
   };
+  const handleReset = () => {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  };
   const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : 'Go to game start';
     return (
@@ -115,6 +119,7 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
+        <button onClick={handleReset}>Reset Game</button>
         <ol>{moves}</ol>
       </div>
     </div>
